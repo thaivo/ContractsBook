@@ -1,5 +1,7 @@
 {
   "name": "contacts_book",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
