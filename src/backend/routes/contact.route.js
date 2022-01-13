@@ -1,4 +1,5 @@
 const express = require('express');
+const db = require('../database/db');
 const app = express();
 const contactRoute = express.Router();
 
@@ -38,6 +39,29 @@ contactRoute.route('/get-contact/:id').get((req, res,next) => {
     })
   })
   
+
+  //in progress
+  contactRoute.route('/find-contact-by-name/:name').get((req, res,next) => {
+    // ContactModel.findBy(req.params.id, (error, data) => {
+    //   if (error) {
+    //     return next(error)
+    //   } else {
+    //     res.json(data)
+    //   }
+    // })
+
+    db.ContactModel.find({
+        "first_name": new RegExp(req.params.name)
+
+    },(error,data)=>{
+        if(error){
+            return next(error);
+        }else{
+            res.json(data);
+        }
+    })
+  })
+
   
   // Update contact
   contactRoute.route('/update-contact/:id').put((req, res, next) => {

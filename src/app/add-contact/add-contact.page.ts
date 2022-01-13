@@ -1,7 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { ContactService } from './../shared/contact.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder, FormControl, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-add-contact',
@@ -19,11 +19,14 @@ export class AddContactPage implements OnInit {
     private zone: NgZone
   ) {
     this.contactForm = this.fb.group({
+      email: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])),
       first_name: [''],
       last_name: [''],
       image: [''],
       phone_number: [''],
-      email: ['']
     })
   }
 

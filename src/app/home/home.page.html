@@ -12,6 +12,11 @@
       Contacts List
     </ion-list-header>
 
+    <ion-toolbar>
+      <ion-searchbar clearIcon="clear search"></ion-searchbar>
+    </ion-toolbar>
+    
+
     <ion-item *ngFor="let contact of Contacts" class="item-label item ios in-list ion-focusable hydrated">
       <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">
         <h2>{{contact.first_name}}</h2>
